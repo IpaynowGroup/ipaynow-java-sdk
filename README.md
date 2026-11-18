@@ -13,7 +13,7 @@
 <dependency>
     <groupId>io.github.ipaynowgroup</groupId>
     <artifactId>ipaynow-java-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -82,7 +82,7 @@ String action = config.endpoint(new H5UnifiedOrderRequest(params).path());
 
 - 正向同步接口默认使用 `responseCode == A001` 判断成功。
 - 退款、撤销、退款查询、撤销查询使用 `responseCode == R000` 判断成功。
-- 支付回调用 `transStatus == A001` 判断成功。
+- 支付回调用 `transStatus == A001` 判断成功；部分通道（如支付宝 APP 支付）只下发 `tradeStatus`，此时回退读取 `tradeStatus`。
 - 退款回调用 `tradeStatus == A001` 判断成功。
 
 也可以直接读取原始字段：
